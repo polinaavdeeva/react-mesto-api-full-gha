@@ -2,10 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const { handleError } = require('./middlewares/errorsHandler');
 const router = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('cors');
 
 // Слушаем 3000 порт
 const { PORT = 3000 } = process.env;
