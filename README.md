@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.172.92
+IP 84.201.172.92
 
 Frontend https://websitemesto.students.nomoredomainsicu.ru
 
