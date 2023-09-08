@@ -1,0 +1,12 @@
+.header__email-container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 24px;
+    align-items: center;
+    text-align: right;
+    font-size: 18px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+}
