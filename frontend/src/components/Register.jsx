@@ -54,7 +54,7 @@ function Register({ setSuccess, setInfoTooltipOpen }) {
         <input
           className="auth__input"
           placeholder="Пароль"
-          type="text"
+          type="password"
           value={password}
           onChange={handleChangePassword}
           required
