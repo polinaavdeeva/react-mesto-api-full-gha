@@ -51,7 +51,7 @@ module.exports.createUser = (req, res, next) => {
     }))
     .then((user) => {
       const { _id } = user;
-      res.status(200).send({
+      res.status(201).send({
         email,
         name,
         about,
