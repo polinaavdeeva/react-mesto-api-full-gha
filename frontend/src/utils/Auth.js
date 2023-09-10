@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.websitemesto.students.nomoredomainsicu.ru';
+export const BASE_URL = 'http://api.websitemesto.students.nomoredomainsicu.ru';
 
 function checkResponse(response) {
     if (response.ok) {
@@ -42,7 +42,6 @@ export const checkToken = (token) => {
     return fetch(`${BASE_URL}/users/me`, {
             method: 'GET',
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             }

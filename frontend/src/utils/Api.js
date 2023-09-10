@@ -1,7 +1,6 @@
 class Api {
-    constructor(options) {
-        this._baseUrl = options.baseUrl;
-        this._headers = options.headers;
+    constructor({baseUrl}) {
+        this._baseUrl = baseUrl;
     }
 
     _checkResponse(response) {
@@ -13,23 +12,35 @@ class Api {
     }
 
     getUserInfo() {
+        const token = localStorage.getItem("token");
         return fetch(`${this._baseUrl}/users/me`, {
-                headers: this._headers
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": `Bearer ${token}`
+            },
             })
             .then(this._checkResponse)
     }
 
     getInitalCards() {
+        const token = localStorage.getItem("token");
         return fetch(`${this._baseUrl}/cards`, {
-                headers: this._headers
+                headers: {
+                    "Content-Type": "application/json",
+                    "authorization": `Bearer ${token}`
+                },
             })
             .then(this._checkResponse)
     }
 
     editUserInfo(data) {
+        const token = localStorage.getItem("token");
         return fetch(`${this._baseUrl}/users/me`, {
                 method: 'PATCH',
-                headers: this._headers,
+                headers: {
+                    "Content-Type": "application/json",
+                    "authorization": `Bearer ${token}`
+                },
                 body: JSON.stringify({
                     name: data.name,
                     about: data.about
@@ -39,9 +50,13 @@ class Api {
     }
 
     addNewCard(data) {
+        const token = localStorage.getItem("token");
         return fetch(`${this._baseUrl}/cards`, {
                 method: 'POST',
-                headers: this._headers,
+                headers: {
+                    "Content-Type": "application/json",
+                    "authorization": `Bearer ${token}`
+                },
                 body: JSON.stringify({
                     name: data.name,
                     link: data.link
@@ -51,17 +66,25 @@ class Api {
     }
 
     deleteCard(id) {
+        const token = localStorage.getItem("token");
         return fetch(`${this._baseUrl}/cards/${id}`, {
                 method: 'DELETE',
-                headers: this._headers
+                headers: {
+                    "Content-Type": "application/json",
+                    "authorization": `Bearer ${token}`
+                },
             })
             .then(this._checkResponse)
     }
 
     editUserAvatar(data) {
+        const token = localStorage.getItem("token");
         return fetch(`${this._baseUrl}/users/me/avatar`, {
                 method: 'PATCH',
-                headers: this._headers,
+                headers: {
+                    "Content-Type": "application/json",
+                    "authorization": `Bearer ${token}`
+                },
                 body: JSON.stringify({
                     avatar: data.avatar
                 })
@@ -70,17 +93,25 @@ class Api {
     }
 
     putLike(id) {
+        const token = localStorage.getItem("token");
         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
                 method: 'PUT',
-                headers: this._headers
+                headers: {
+                    "Content-Type": "application/json",
+                    "authorization": `Bearer ${token}`
+                },
             })
             .then(this._checkResponse)
     }
 
     deleteLike(id) {
+        const token = localStorage.getItem("token");
         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
                 method: 'DELETE',
-                headers: this._headers
+                headers: {
+                    "Content-Type": "application/json",
+                    "authorization": `Bearer ${token}`
+                },
             })
             .then(this._checkResponse)
     }
@@ -88,8 +119,5 @@ class Api {
 }
 
 export const api = new Api({
-    baseUrl: 'http://api.websitemesto.students.nomoredomainsicu.ru',
-    headers: {
-        'Content-Type': 'application/json'
-    }
+    baseUrl: 'https://api.websitemesto.students.nomoredomainsicu.ru',
 });
