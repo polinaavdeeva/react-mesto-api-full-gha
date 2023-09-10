@@ -155,8 +155,9 @@ function App() {
     setLoggedIn(true);
   }
 
-  function handleTokenCheck() {
-    if (localStorage.getItem("token")) {
+  useEffect(() => {
+    const handleTokenCheck = () => {  
+      if (localStorage.getItem("token")) {
       const jwt = localStorage.getItem("token");
       console.log(jwt);
       Auth.checkToken(jwt)
@@ -166,18 +167,15 @@ function App() {
           }
           setLoggedIn(true);
           setCurrentUser(data);
-          setEmail(data.data.email);
+          setEmail(data.email);
           navigate("/",{replace: true});
         })
         .catch(() => {
           setLoggedIn(false);
         });
-    }
-  }
-
-  useEffect(() => {
+    }};
     handleTokenCheck();
-  }, []);
+   }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
